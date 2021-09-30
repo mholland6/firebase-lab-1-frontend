@@ -1,0 +1,9 @@
+body {
+  background: rgb(140, 109, 203);
+}
+
+.Post {
+  background: rgb(216, 212, 223);
+  border-radius: 5px;
+  min-width: max-content;
+}
