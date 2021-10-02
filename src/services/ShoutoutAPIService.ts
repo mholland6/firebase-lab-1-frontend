@@ -14,9 +14,14 @@ export function addPost(post: Post): Promise<Post> {
   return axios.post(`${baseUrl}/shoutouts`, post).then((res) => res.data);
 }
 
-//This service GETS shoutouts to a specific user
-export function getPostsToSpecificUser(to: string): Promise<Post[]> {
+// This service GETS shoutouts to a specific user
+export function getPostsToSpecificUser(name: string): Promise<Post[]> {
   return axios
-    .get(`${baseUrl}/shoutouts`, { params: { name: to } })
+    .get(`${baseUrl}/shoutouts`, { params: { name: name } })
     .then((res) => res.data);
+}
+
+// This service DELETES a shoutout on the click of a button
+export function deleteShoutout(id: string): Promise<void> {
+  return axios.delete(`${baseUrl}/shoutouts/${encodeURIComponent(id)}`);
 }
