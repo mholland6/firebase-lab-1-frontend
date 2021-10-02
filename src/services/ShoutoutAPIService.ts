@@ -13,3 +13,10 @@ export function fetchAllPosts(): Promise<Post[]> {
 export function addPost(post: Post): Promise<Post> {
   return axios.post(`${baseUrl}/shoutouts`, post).then((res) => res.data);
 }
+
+//This service GETS shoutouts to a specific user
+export function getPostsToSpecificUser(to: string): Promise<Post[]> {
+  return axios
+    .get(`${baseUrl}/shoutouts`, { params: { name: to } })
+    .then((res) => res.data);
+}

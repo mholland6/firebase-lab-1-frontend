@@ -1,22 +1,32 @@
 import { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router";
 import { AuthContext } from "../context/auth-context";
 import { signInWithGoogle } from "../firebaseConfig";
 import Post from "../models/post-model";
-import { addPost, fetchAllPosts } from "../services/ShoutoutAPIService";
+import {
+  addPost,
+  getPostsToSpecificUser,
+} from "../services/ShoutoutAPIService";
 import PostForm from "./PostForm";
 import PostInList from "./PostInList";
+import "./PostsToSpecificUser.css";
 
-function PostList() {
+interface RouteParams {
+  name: string;
+}
+
+function PostsToSpecificUser() {
   const [posts, setPosts] = useState<Post[]>([]);
+  const { name } = useParams<RouteParams>();
   const { user } = useContext(AuthContext);
 
   // this only runs once when component first loads
   useEffect(() => {
     loadPosts();
-  }, []);
+  }, [name]);
 
   function loadPosts() {
-    fetchAllPosts().then((itemsFromApi) => {
+    getPostsToSpecificUser(name).then((itemsFromApi) => {
       setPosts(itemsFromApi);
       console.log(itemsFromApi);
     });
@@ -31,12 +41,11 @@ function PostList() {
   }
 
   return (
-    <div className="PostList">
-      <div>
-        {posts.map((post) => (
-          <PostInList post={post} key={post._id} />
-        ))}
-      </div>
+    <div className="PostsToSpecificUser">
+      {posts.map((post) => (
+        <PostInList post={post} key={post._id} />
+      ))}
+
       {user ? (
         <PostForm onSubmit={handleAddPost} />
       ) : (
@@ -49,4 +58,4 @@ function PostList() {
   );
 }
 
-export default PostList;
+export default PostsToSpecificUser;

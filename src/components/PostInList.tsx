@@ -1,3 +1,6 @@
+import { userInfo } from "os";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth-context";
 import Post from "../models/post-model";
 import "./PostInList.css";
 
@@ -6,6 +9,7 @@ interface Props {
 }
 
 function PostInList({ post }: Props) {
+  const { user } = useContext(AuthContext);
   return (
     <div className="Post">
       <section className="Post__title">

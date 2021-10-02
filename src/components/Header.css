@@ -1,0 +1,12 @@
+Header {
+  border-bottom: 3px solid black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.signed-in {
+  display: flex;
+  flex-direction: row;
+}

@@ -8,27 +8,23 @@ import {
 } from "react-router-dom";
 import { signInWithGoogle, signOut } from "./firebaseConfig";
 import { AuthContext, AuthContextProvider } from "./context/auth-context";
+import Header from "./components/Header";
+import PostsToSpecificUser from "./components/PostsToSpecificUser";
 
 function App() {
   const { user } = useContext(AuthContext);
   return (
     <div className="App">
       <Router>
-        <h1>Shoutouts</h1>
-        {user ? (
-          <div className="signed-in">
-            <button onClick={signOut}>Sign Out</button>
-          </div>
-        ) : (
-          <div className="signed-out">
-            <button onClick={signInWithGoogle}>Sign In With Google</button>
-          </div>
-        )}
-        <pre>{JSON.stringify(user, null, 2)}</pre>
-        <Route path="/" exact>
-          <PostList />
-        </Route>
-        <Route path="/user/:name"></Route>
+        <Header />
+        <Switch>
+          <Route path="/" exact>
+            <PostList />
+          </Route>
+          <Route path="/user/:name" exact>
+            <PostsToSpecificUser />
+          </Route>
+        </Switch>
       </Router>
     </div>
   );
