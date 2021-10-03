@@ -10,13 +10,15 @@ import { signInWithGoogle, signOut } from "./firebaseConfig";
 import { AuthContext, AuthContextProvider } from "./context/auth-context";
 import Header from "./components/Header";
 import PostsToSpecificUser from "./components/PostsToSpecificUser";
+import ButtonAppBar from "./components/ExperimentalHeader";
 
 function App() {
   const { user } = useContext(AuthContext);
   return (
     <div className="App">
       <Router>
-        <Header />
+        <ButtonAppBar />
+
         <Switch>
           <Route path="/" exact>
             <PostList />
