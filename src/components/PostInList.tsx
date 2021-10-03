@@ -7,9 +7,10 @@ import "./PostInList.css";
 
 interface Props {
   post: Post;
+  onDelete: () => void;
 }
 
-function PostInList({ post }: Props) {
+function PostInList({ post, onDelete }: Props) {
   // const { user } = useContext(AuthContext);
   return (
     <div className="Post">
@@ -24,6 +25,7 @@ function PostInList({ post }: Props) {
       <section className="Post__postText">
         <p>{post.postText}</p>
       </section>
+      <button onClick={onDelete}>Delete This Shoutout</button>
     </div>
   );
 }

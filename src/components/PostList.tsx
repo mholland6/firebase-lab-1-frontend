@@ -2,7 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/auth-context";
 import { signInWithGoogle } from "../firebaseConfig";
 import Post from "../models/post-model";
-import { addPost, fetchAllPosts } from "../services/ShoutoutAPIService";
+import {
+  addPost,
+  deleteShoutout,
+  fetchAllPosts,
+} from "../services/ShoutoutAPIService";
 import PostForm from "./PostForm";
 import PostInList from "./PostInList";
 
@@ -30,11 +34,19 @@ function PostList() {
     });
   }
 
+  function handleDeleteShoutout(id: string): void {
+    deleteShoutout(id).then(() => loadPosts());
+  }
+
   return (
     <div className="PostList">
       <div>
         {posts.map((post) => (
-          <PostInList post={post} key={post._id} />
+          <PostInList
+            post={post}
+            key={post._id}
+            onDelete={() => handleDeleteShoutout(post._id!)}
+          />
         ))}
       </div>
       {user ? (

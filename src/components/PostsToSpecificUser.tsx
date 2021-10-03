@@ -5,6 +5,7 @@ import { signInWithGoogle } from "../firebaseConfig";
 import Post from "../models/post-model";
 import {
   addPost,
+  deleteShoutout,
   getPostsToSpecificUser,
 } from "../services/ShoutoutAPIService";
 import PostForm from "./PostForm";
@@ -40,10 +41,21 @@ function PostsToSpecificUser() {
     });
   }
 
+  function handleDeletePost(id: string): void {
+    console.log("clicked?");
+    deleteShoutout(id).then(() => {
+      loadPosts();
+    });
+  }
+
   return (
     <div className="PostsToSpecificUser">
       {posts.map((post) => (
-        <PostInList post={post} key={post._id} />
+        <PostInList
+          post={post}
+          key={post._id}
+          onDelete={() => handleDeletePost(post._id!)}
+        />
       ))}
 
       {user ? (
