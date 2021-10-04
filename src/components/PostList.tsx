@@ -9,6 +9,7 @@ import {
 } from "../services/ShoutoutAPIService";
 import PostForm from "./PostForm";
 import PostInList from "./PostInList";
+import "./PostList.css";
 
 function PostList() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -40,7 +41,7 @@ function PostList() {
 
   return (
     <div className="PostList">
-      <div>
+      <div className="DisplayedPosts">
         {posts.map((post) => (
           <PostInList
             post={post}

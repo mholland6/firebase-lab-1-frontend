@@ -29,7 +29,7 @@ function PostsToSpecificUser() {
   function loadPosts() {
     getPostsToSpecificUser(name).then((itemsFromApi) => {
       setPosts(itemsFromApi);
-      console.log(itemsFromApi);
+      // console.log(itemsFromApi);
     });
   }
 

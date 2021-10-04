@@ -18,7 +18,6 @@ function App() {
     <div className="App">
       <Router>
         <ButtonAppBar />
-
         <Switch>
           <Route path="/" exact>
             <PostList />
