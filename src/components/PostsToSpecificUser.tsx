@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { AuthContext } from "../context/auth-context";
 import { signInWithGoogle } from "../firebaseConfig";
@@ -21,17 +21,19 @@ function PostsToSpecificUser() {
   const { name } = useParams<RouteParams>();
   const { user } = useContext(AuthContext);
 
+  const loadPosts = useCallback(
+    function () {
+      getPostsToSpecificUser(name).then((itemsFromApi) => {
+        setPosts(itemsFromApi);
+        // console.log(itemsFromApi);
+      });
+    },
+    [name]
+  );
   // this only runs once when component first loads
   useEffect(() => {
     loadPosts();
-  }, [name]);
-
-  function loadPosts() {
-    getPostsToSpecificUser(name).then((itemsFromApi) => {
-      setPosts(itemsFromApi);
-      console.log(itemsFromApi);
-    });
-  }
+  }, [loadPosts]);
 
   function handleAddPost(post: Post) {
     // save the item to the API/Database

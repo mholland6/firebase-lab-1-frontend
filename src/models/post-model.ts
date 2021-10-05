@@ -3,4 +3,5 @@ export default interface Post {
   title: string;
   author: string;
   postText: string;
+  imageUrl?: string;
 }

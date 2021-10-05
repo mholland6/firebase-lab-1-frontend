@@ -1,7 +1,3 @@
-body {
-  background: rgb(140, 109, 203);
-}
-
 .postContainer {
   box-sizing: border-box;
   width: 90vh;
@@ -14,4 +10,14 @@ body {
 .Post {
   background: rgb(216, 212, 223);
   border-radius: 5px;
+}
+
+.Card {
+  display: flex;
+  flex-direction: column;
+}
+
+.PostImage {
+  width: 100px;
+  height: 100px;
 }

@@ -2,12 +2,15 @@ import "./Header.css";
 import { signInWithGoogle, signOut } from "../firebaseConfig";
 import { AuthContext, AuthContextProvider } from "../context/auth-context";
 import { useContext } from "react";
+import { Typography } from "@mui/material";
 
 function Header() {
   const { user } = useContext(AuthContext);
   return (
     <header>
-      <h1>Shoutouts</h1>
+      <Typography variant="h1" color="primary">
+        Shoutouts
+      </Typography>
       {user ? (
         <div className="signed-in">
           <p>{user.displayName}</p>

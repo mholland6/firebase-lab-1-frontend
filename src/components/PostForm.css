@@ -1,7 +1,25 @@
 .PostForm {
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: center;
   justify-content: space-evenly;
-  background: rgb(220, 107, 107);
+  background: rgb(215, 130, 130);
+}
+
+.PostForm ul {
+  list-style: none;
+  padding: 0;
+}
+
+.PostForm__title {
+  align-self: flex-start;
+}
+
+.PostForm__postText {
+  display: flex;
+  flex-direction: column;
+}
+
+.PostForm__title__Input input {
+  width: 148px;
 }
