@@ -5,10 +5,7 @@ import {
   CardContent,
   Typography,
 } from "@mui/material";
-import { userInfo } from "os";
-import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/auth-context";
 import Post from "../models/post-model";
 import "./PostInList.css";
 import { DeleteOutline } from "@mui/icons-material";
@@ -34,7 +31,7 @@ function PostInList({ post, onDelete }: Props) {
           {post.postText}
         </Typography>
         <Typography className="PostImage">
-          {post.imageUrl && <img src={post.imageUrl} alt="post picture" />}
+          {post.imageUrl && <img src={post.imageUrl} alt="" />}
         </Typography>
       </CardContent>
       <CardActions>
