@@ -11,6 +11,7 @@ import { AuthContext, AuthContextProvider } from "./context/auth-context";
 import Header from "./components/Header";
 import PostsToSpecificUser from "./components/PostsToSpecificUser";
 import ButtonAppBar from "./components/ExperimentalHeader";
+import FormDialog from "./components/FormDialog";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -18,6 +19,7 @@ function App() {
     <div className="App">
       <Router>
         <ButtonAppBar />
+        {/* <FormDialog onSubmit={handleSubmit} /> */}
         <Switch>
           <Route path="/" exact>
             <PostList />

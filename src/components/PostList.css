@@ -4,3 +4,8 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+.FormDialog {
+  text-align: center;
+  margin-top: 10px;
+}

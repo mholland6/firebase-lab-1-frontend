@@ -11,3 +11,13 @@
   background: rgb(216, 212, 223);
   border-radius: 5px;
 }
+
+.Card {
+  display: flex;
+  flex-direction: column;
+}
+
+.PostImage {
+  width: 100px;
+  height: 100px;
+}

@@ -20,7 +20,7 @@ interface Props {
 
 function PostInList({ post, onDelete }: Props) {
   return (
-    <Card sx={{ minWidth: 275, maxWidth: 275, margin: 1 }}>
+    <Card sx={{ minWidth: 275, maxWidth: 275, margin: 1 }} className="Card">
       <CardContent>
         <Typography sx={{ fontSize: 16 }} color="text.primary" gutterBottom>
           <p>
@@ -33,7 +33,7 @@ function PostInList({ post, onDelete }: Props) {
         <Typography variant="body2" align="center">
           {post.postText}
         </Typography>
-        <Typography>
+        <Typography className="PostImage">
           {post.imageUrl && <img src={post.imageUrl} alt="post picture" />}
         </Typography>
       </CardContent>

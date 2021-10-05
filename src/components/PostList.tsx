@@ -7,6 +7,7 @@ import {
   deleteShoutout,
   fetchAllPosts,
 } from "../services/ShoutoutAPIService";
+import FormDialog from "./FormDialog";
 import PostForm from "./PostForm";
 import PostInList from "./PostInList";
 import "./PostList.css";
@@ -41,6 +42,9 @@ function PostList() {
 
   return (
     <div className="PostList">
+      <div className="FormDialog">
+        <FormDialog onSubmit={handleAddPost} />
+      </div>
       <div className="DisplayedPosts">
         {posts.map((post) => (
           <PostInList
